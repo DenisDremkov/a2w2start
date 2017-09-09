@@ -1,0 +1,1 @@
+Include package.json only for development and production mode. Test config empty!
