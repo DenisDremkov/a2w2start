@@ -4,7 +4,7 @@ let webpack           = require('webpack'),
     helpers           = require('./helpers'),
     configApp         = require('../../commonApp/configApp.js');
 
-
+console.log(process.env.NODE_ENV, process.env.ENV)
 module.exports = {
 
     entry: {
@@ -38,9 +38,35 @@ module.exports = {
             },
             {
                 test: /\.css$/,
+                exclude: configApp.rootPath + '/src',
+                loader: ['to-string-loader', 'css-loader' ]
+            },
+            {
+                test: /\.css$/,
                 include: configApp.rootPath + '/src',
                 loader: 'raw-loader'
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                loaders: ['raw-loader', 'sass-loader']
             }
+            // {
+            //     test: /\.scss$/,
+            //     use: [
+            //         {
+            //             loader: "style-loader",                 // creates style nodes from JS strings
+            //         }, 
+            //         {
+            //             loader: "css-loader",               // translates CSS into CommonJS
+            //             options: { sourceMap: true }
+            //         }, 
+            //         {
+            //             loader: "sass-loader",              // compiles Sass to CSS
+            //             options: { sourceMap: true }
+            //         }
+            //     ]
+            // }
         ]
     },
 

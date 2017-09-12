@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "MEAN2",
   "scripts": {
-    "start": "node server.js"
+    "dev": "cross-env NODE_ENV=dev nodemon server.js",
+    "prod": "cross-env NODE_ENV=prod node server.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -11,5 +12,6 @@
     "express": "^4.15.4"
   },
   "devDependencies": {
+    "cross-env": "^5.0.5"
   }
 }

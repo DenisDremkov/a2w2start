@@ -1,12 +1,12 @@
-let express 	= require('express'),
+const express 	= require('express'),
 	path 		= require('path'),
 	app 		= express(),
 	bodyParser 	= require('body-parser'),
 	configApp 	= require('./commonApp/configApp.js'),
 	api 		= require('./routes/index.js'),
-	PORT 		= configApp.portProduction;
+	PORT 		= configApp.port;
+	// mongoose   = require('mongoose');
 
-// app.set('views', path.join(__dirname, '/' + configApp.publicFolderName));
 
 app.use(express.static(path.join(__dirname, configApp.publicFolderName)))
 app.use(bodyParser.json());
