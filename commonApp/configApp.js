@@ -1,6 +1,8 @@
 
 const appSecureType = false;					// true - https, false - http
 
+const crypto = require('crypto').randomBytes(256).toString('hex');
+
 // database connection
 const dbConnect = {
 	log: 'denisdremkov',
@@ -9,10 +11,11 @@ const dbConnect = {
 
 // production mode
 const prod = {
-	host: 		'heroku',					// deploy host
-	port: 		80,							// deploy port
-	dbHost : 	'heroku',					// deploy DB host			 		
-	dbPort : 	27017						// deploy DB port
+	host: 		'localhost',					// deploy host
+	port: 		80,								// deploy port
+	dbHost: 	'localhost',					// deploy DB host			 		
+	dbPort: 	27017,							// deploy DB port
+	dbName:   	'a2w2'
 }
 
 // development mode	
@@ -20,27 +23,32 @@ const  dev = {
 	host: 		'localhost',
 	port: 		3000,
 	dbHost: 	'localhost',
-	dbPort: 	9000
+	dbPort: 	27017,
+	dbName:   	'a2w2'
 }
 
 const node_env = process.env.NODE_ENV;
 
-if ( ! node_env ) { throw {message: "set NODE_ENV!: - dev or - prod"} }
+// сдк=елать выкинуть исключение
+if ( ! node_env ) { console.log('set NODE_ENV!: - dev or - prod') }
 
 const secureTypeValue = (appSecureType) ? 'https://' : 'http://';
 const url = (node_env === 'dev') ? (dev.host + ':' + dev.port + '/') : (prod.host + ':' + prod.port + '/');
 const hostFullUrl = secureTypeValue + url;
-const dbHostUrl   = (node_env === 'dev') ? dev.dbHost + ':' + dev.dbPort + '/' : prod.dbHost + ':' + prod.dbPort + '/';
-const dbFullUrl   = 'mongodb://' + dbConnect.log + ':' + dbConnect.pass + '@' + dbHostUrl;
-    			
+const dbHostUrl   = (node_env === 'dev') ? (dev.dbHost + ':' + dev.dbPort + '/') : (prod.dbHost + ':' + prod.dbPort + '/');
+const dbFullUrl   = 'mongodb://' + dbHostUrl + ((node_env === 'dev') ? dev.dbName : prod.dbName);   //dbConnect.log + ':' + dbConnect.pass + '@'
+    	
+
 const config = {             
 	appFolderName:    	'a2w2', 						 
 	hostUrl: 			hostFullUrl, 
 	dbUrl: 				dbFullUrl,
 	port: 				(node_env === 'dev') ? dev.port : prod.port, 
 	publicFolderName: 	'public',						// public folder (dist) (result of build) (client)
-	rootPath: 			require('path').resolve(__dirname, '..')
+	rootPath: 			require('path').resolve(__dirname, '..'),
+	secret:   			crypto
 }
-console.log('SERVER START IN ' + node_env + ' MODE')
-console.log('FULL CONFIGURATION: ', config)
+console.log('MODE: ' + node_env)
+console.log('HOST API: ', config.hostUrl)
+console.log('CONFIG DB URL: ', config.dbUrl)
 module.exports = config;
