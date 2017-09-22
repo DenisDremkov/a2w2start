@@ -1,0 +1,70 @@
+<form [formGroup] = "form">
+	<label class="my_input_wrap">
+		<input 
+			on-ngClass = "{
+				'invalid': 	( form.controls.username.errors && form.controls.username.dirty),
+				'valid': 	(!form.controls.username.errors && form.controls.username.dirty)
+			}"
+			pattern 		= "^(0|[1-9][0-9]*)$"
+			formControlName = "username" 	
+			type			= "text" 
+			class			= "form-control" 
+			aria-describedby= "loginHelp" 
+			placeholder		= "Enter Login only number"
+			[controls] 		= "form.controls"
+			[controlName] 	= "'username'"
+			my-valid-message
+			required
+		>
+	</label>
+	
+	<!-- [parentV]   = "form.controls.login.dirty" -->
+			<!-- aw-valid-messages  = "form.controls.login" -->
+
+	<input
+		on-ngClass = "{
+			'invalid': 	(form.controls.email.errors && form.controls.email.dirty),
+			'valid': 	(!form.controls.email.errors && form.controls.email.dirty)
+		}"
+		formControlName = "email" 
+		type			= "email" 
+		class			= "form-control" 
+		aria-describedby= "emailHelp" 
+		placeholder		= "Enter email"
+		
+		required
+	>
+	<!-- [controls] 		= "form.controls"
+		[controlName] 	= "'email'"
+		my-valid-message -->
+
+	<input
+		on-ngClass		= "{
+			'invalid': 	(form.controls.password.errors && form.controls.password.dirty),
+			'valid': 	(!form.controls.password.errors && form.controls.password.dirty)
+		}"
+		formControlName = "password" 
+		type			= "password" 
+		class			= "form-control" 
+		placeholder		= "Password"
+		required
+	>
+
+	<input
+		on-ngClass		= "{
+			'invalid': 	(form.controls.confirm.errors && form.controls.confirm.dirty),
+			'valid': 	(!form.controls.confirm.errors && form.controls.confirm.dirty)
+		}"
+		formControlName = "confirm" 
+		type			= "password" 
+		class			= "form-control"
+		placeholder		= "Password"
+		required
+	>
+
+	<button 
+		class		= "btn btn-primary"
+		(click) 	= "registerUser()">
+		registr
+	</button>
+</form>

@@ -1,0 +1,13 @@
+:host {
+
+	// logo
+	>a {
+		display: inline-block;
+		float: left;
+		img {
+			margin-top: 10px;
+			height: 30px;
+			width: auto;
+		}
+	}
+}

@@ -9,8 +9,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.0",
+    "cors": "^2.8.4",
     "express": "^4.15.4",
+    "mongodb": "^2.2.31",
     "mongoose": "^4.10.8"
   },
   "devDependencies": {

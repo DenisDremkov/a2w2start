@@ -2,7 +2,7 @@ let webpack           = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     helpers           = require('./helpers'),
-    configApp         = require('../../commonApp/configApp.js');
+    appConfig         = require('../../config/appConfig.js');
 
 console.log(process.env.NODE_ENV, process.env.ENV)
 module.exports = {
@@ -33,17 +33,17 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                exclude: configApp.rootPath + '/src',
+                exclude: appConfig.rootPath + '/src',
                 loaders: ['to-string-loader', 'css-loader' ]
             },
             {
                 test: /\.css$/,
-                exclude: configApp.rootPath + '/src',
+                exclude: appConfig.rootPath + '/src',
                 loader: ['to-string-loader', 'css-loader' ]
             },
             {
                 test: /\.css$/,
-                include: configApp.rootPath + '/src',
+                include: appConfig.rootPath + '/src',
                 loader: 'raw-loader'
             },
             {

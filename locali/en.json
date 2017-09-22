@@ -1,0 +1,6 @@
+{
+	"language": "english",
+	"validErrorMessages": {
+		"pattern": "pattern error"
+	}
+}

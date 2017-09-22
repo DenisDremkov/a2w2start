@@ -4,7 +4,7 @@ var commonConfig = require('./webpack.common.js');
 // var helpers = require('./helpers');
 
 let path = require('path');
-let configApp = require('../../commonApp/configApp.js');
+let configApp = require('../../config/appConfig.js');
 
 module.exports = webpackMerge(
 
@@ -25,8 +25,7 @@ module.exports = webpackMerge(
 
         devServer: {
             historyApiFallback: true,
-            stats: 'minimal',
-            port: configApp.portDevelopment
+            stats: 'minimal'
         }
     }
-    );
+);

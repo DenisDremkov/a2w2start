@@ -1,5 +1,5 @@
 
-let configApp           = require('../../commonApp/configApp.js'),
+let configApp           = require('../../config/appConfig.js'),
     webpack             = require('webpack'),
     webpackMerge        = require('webpack-merge'),
     ExtractTextPlugin   = require('extract-text-webpack-plugin'),

@@ -8,8 +8,11 @@ import { ViewEncapsulation } from '@angular/core';
 	selector: '[my-app]',
 	templateUrl: './app.component.html',
 	styleUrls: [
-		'./app.component.scss'
+		'./app.reset.scss', // first in list
+		// './app.config.scss',
+		'./app.styles.scss'
+
 	],
 	encapsulation: ViewEncapsulation.None
 })
-export class AppComponent { }
+export class AppComponent {}
