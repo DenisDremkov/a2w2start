@@ -1,0 +1,54 @@
+
+<form [formGroup] = "form"> 
+
+
+	<i on-click = "back()" class="fa fa-times" aria-hidden="true"></i>
+	
+	<label class="my_input_wrap js_my_input_wrap">
+		<input 
+			on-ngClass = "{
+				'invalid': 	( form.controls.username.errors && form.controls.username.dirty),
+				'valid': 	(!form.controls.username.errors && form.controls.username.dirty)
+			}"
+			formControlName = "username"
+			minlength		= 3
+			maxlength		= 6 	
+			type			= "text" 
+			class			= "form-control" 
+			aria-describedby= "loginHelp" 
+			placeholder		= "Login"
+			
+			required
+		>
+		<!-- [controls] 		= "form.controls"
+			[controlName] 	= "'username'"
+			my-valid-message -->
+	</label>
+	
+
+	<input
+		on-ngClass		= "{
+			'invalid': 	(form.controls.password.errors && form.controls.password.dirty),
+			'valid': 	(!form.controls.password.errors && form.controls.password.dirty)
+		}"
+		formControlName = "password" 
+		type			= "password" 
+		class			= "form-control" 
+		placeholder		= "Password"
+		required
+	>
+
+	<button 
+		class		= "btn btn-light"
+		(click) 	= "login()">
+		login
+	</button>
+	
+	<a 
+		[routerLinkActive]="['active']" 
+		routerLink = "registration">
+		registration
+	</a>	
+
+</form>
+<router-outlet></router-outlet>

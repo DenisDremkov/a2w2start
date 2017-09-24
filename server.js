@@ -9,8 +9,13 @@ const express 		= require('express'),
 	dbConfig 		= require('./config/dbConfig'),
 	autentification = require('./routes/autentification')(router),
 	mongoose    	= require('mongoose'),
-	cors 			= require('cors');
-
+	cors 			= require('cors'),
+	fs 				= require("fs"),
+	localiRu 		= require('./locali/ru.json'),
+	localiEn 		= require('./locali/en.json');
+// var fs = require("fs");
+// console.log("\n *START* \n");
+// var content = fs.readFileSync("content.txt");
 mongoose.Promise = global.Promise;
 mongoose.connect( dbConfig.dbHost, {useMongoClient: true, promiseLibrary: global.Promise },	err => {
 	if (err) {console.log(err)}
@@ -30,22 +35,17 @@ app.use('/auth', autentification); // autentif/registr,  autentif/login ....
 
 // app.get('/api', api);
 app.get('/getLocalization', function(req, res) {
-	res.send({
-		language: "english",
-		validErrorMessages: {
-			pattern: "pattern error"
-		}
-	})
+	res.send({lang:"en"})
 	console.log('asdasdasdasd')
 });
 
 // app.get('/api', api);
 app.get('/appInit', function(req, res) {
 	
-	// res.send({config: 'sync'})
+	// console.log(JSON.parse(req.headers.param))
 	setTimeout(function() {
 		res.send({config: 'async'})
-	},5000)
+	},500)
 });
 
 

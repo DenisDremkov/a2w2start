@@ -1,25 +1,33 @@
 'use strict';
+// core
+	import { Component, OnInit } 					from '@angular/core';
+	import { FormBuilder, FormGroup, Validators } 	from '@angular/forms';
+	import { Http, Headers, RequestOptions } 		from '@angular/http';
+	import { Location } 							from '@angular/common';
 
-import { Component, OnInit } 					from '@angular/core';
-import { FormBuilder, FormGroup, Validators } 	from '@angular/forms';
-import { Http, Headers, RequestOptions } 		from '@angular/http';
+// services
+	import { AuthService } 							from '../../shared/services/auth.service';
 
-import { AuthService } 							from '../../shared/services/auth.service';
-import { User } 								from '../../interfaces/user';
+// interface
+	import { User } 								from '../../interfaces/user';
+
+// animation
+	import { slideInOutAnimation } 					from '../_animations/slide-in-out.animation';
+	import { fadeInAnimation } 						from '../_animations/fade-in.animation';
 
 @Component({
 	selector: 'my-auth',
-	templateUrl: './auth.component.html',
-	styleUrls: [
-		'./auth.component.scss'
-	]
+	templateUrl: './registr.component.html',
+	styleUrls: ['./registr.component.scss'],
+	host: { '[@slideInOutAnimation]': '' },
+	animations: [slideInOutAnimation]
 })
 
-// продолжить с https://www.youtube.com/watch?v=ugkDA3_wxhw&t=199s
-export class Auth { 
+export class Registr { 
 
 	form: FormGroup;
 	pattern: string;
+	
 	createForm () {
 		this.form = this.formBuilder.group({
 			username: 	['', Validators.required],
@@ -32,11 +40,14 @@ export class Auth {
 	constructor (
 		private formBuilder: FormBuilder,
 		private authService: AuthService,
+		private _location: Location
 
 	) {
+		console.log('create registr form')
 		this.createForm()
-		this.pattern = "/^\d+$/";
 	}
+
+	back () {this._location.back();}
 
 	registerUser() {
 

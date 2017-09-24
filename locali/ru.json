@@ -1,0 +1,8 @@
+{
+	"language": "русский",
+	"validErrorMessages": {
+		"pattern": "pattern ошибка",
+		"minlength": "minlength ошибка",
+		"maxlength": "maxlength ошибка"
+	}
+}

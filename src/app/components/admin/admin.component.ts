@@ -10,4 +10,8 @@ import { ViewEncapsulation } 	from '@angular/core';
 	]
 })
 
-export class Admin { }
+export class Admin { 
+	constructor (){
+		console.log('create admin class')
+	}
+}

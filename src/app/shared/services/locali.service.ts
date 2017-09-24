@@ -26,7 +26,7 @@ export class LocaliService {
 	// JSON.parse(data.text()))
 
 	getData (section:string) {
-		console.log(section, this.data)
+		console.error(section, this.data)
 		// return this.data[section];
 		// console.log(this.data)
 	// 	if (this.data) {

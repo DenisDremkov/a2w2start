@@ -6,7 +6,8 @@ import { NgModule } 			from '@angular/core';
 import { Products } 			from './components/products/products.component';
 import { Admin } 				from './components/admin/admin.component';
 import { Home } 				from './components/home/home.component';
-import { Auth } 				from './components/auth/auth.component';
+import { Registr } 				from './components/registr/registr.component';
+import { Login } 				from './components/login/login.component';
 
 const appRoutes: Routes = [
 	{
@@ -14,9 +15,9 @@ const appRoutes: Routes = [
 		component: Home
 	},
 	{
-		path: 'auth',
-		component: Auth
-	},
+		path: 'home',
+		component: Home
+	},	
 	{
 		path: 'products',
 		component: Products
@@ -26,15 +27,38 @@ const appRoutes: Routes = [
 		component: Admin
 	},
 	{
+		path: 'login',
+		// component: Login 
+		children: [
+			{
+				path: '',
+				component: Login 
+			},
+			{
+				path: 'registration',
+				component: Registr 
+			}
+		]
+	},
+	// { 
+	// 	path: 'registration', 
+	// 	component: Registr 
+	// },
+	// {
+	// 	path: 'baket',
+	// 	component: Basket
+	// },
+	{
 		path: '**',
-		component: Home
+		redirectTo: 'home'
+		// component: Home
 	}
 ];
 
 @NgModule({
 	declarations: [],
 	imports: [
-    	RouterModule.forRoot(appRoutes)
+    	RouterModule.forRoot(appRoutes) // forRoot(appRoutes, { useHash: true })  todo hash if prod mode
     ],
 	bootstrap: [],
 	exports: [RouterModule] 

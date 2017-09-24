@@ -1,6 +1,8 @@
 {
 	"language": "english",
 	"validErrorMessages": {
-		"pattern": "pattern error"
+		"pattern": "pattern error",
+		"minlength": "minlength error",
+		"maxlength": "maxlength error"
 	}
 }

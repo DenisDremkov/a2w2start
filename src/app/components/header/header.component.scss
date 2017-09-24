@@ -1,13 +1,40 @@
 :host {
 
-	// logo
-	>a {
-		display: inline-block;
-		float: left;
-		img {
-			margin-top: 10px;
-			height: 30px;
-			width: auto;
+
+	._my_left {
+		float: left; 
+
+		// logotype
+		>a {
+			float: left;
+			display: inline-block;
+			img {
+				margin-top: 10px;
+				height: 30px;
+				width: auto;
+			}
+		}
+		
+		// navigation
+		nav {
+			float: left;
+
+		}		
+	}
+
+
+	._my_right {
+		float: right;
+		height: 50px;
+		line-height: 50px;
+		
+		a {
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 20px;
+			&.fa-sign-in {
+				margin-right: 30px;
+			}
 		}
 	}
 }

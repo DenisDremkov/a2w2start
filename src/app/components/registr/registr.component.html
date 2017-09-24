@@ -1,12 +1,14 @@
-<form [formGroup] = "form">
-	<label class="my_input_wrap">
+<!-- <form [formGroup] = "form">
+	<label class="my_input_wrap js_my_input_wrap">
 		<input 
 			on-ngClass = "{
 				'invalid': 	( form.controls.username.errors && form.controls.username.dirty),
 				'valid': 	(!form.controls.username.errors && form.controls.username.dirty)
 			}"
 			pattern 		= "^(0|[1-9][0-9]*)$"
-			formControlName = "username" 	
+			formControlName = "username"
+			minlength		= 3
+			maxlength		= 6 	
 			type			= "text" 
 			class			= "form-control" 
 			aria-describedby= "loginHelp" 
@@ -17,10 +19,6 @@
 			required
 		>
 	</label>
-	
-	<!-- [parentV]   = "form.controls.login.dirty" -->
-			<!-- aw-valid-messages  = "form.controls.login" -->
-
 	<input
 		on-ngClass = "{
 			'invalid': 	(form.controls.email.errors && form.controls.email.dirty),
@@ -34,9 +32,7 @@
 		
 		required
 	>
-	<!-- [controls] 		= "form.controls"
-		[controlName] 	= "'email'"
-		my-valid-message -->
+
 
 	<input
 		on-ngClass		= "{
@@ -67,4 +63,8 @@
 		(click) 	= "registerUser()">
 		registr
 	</button>
+</form> -->
+<form>
+	<i on-click = "back()" class="fa fa-times" aria-hidden="true"></i>
+	<h2>registr dsafasdf</h2>
 </form>
