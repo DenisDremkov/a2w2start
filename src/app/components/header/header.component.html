@@ -11,6 +11,11 @@
 
 
 <div class="_my_right">
+
+	<select [(ngModel)]="selectedLanguage" on-change="changeLanguage()">
+  		<option [value]="'ru'" [selected]="selectedLanguage == 'ru'">ru</option>
+  		<option [value]="'en'" [selected]="selectedLanguage == 'en'">en</option>
+	</select>
 	
 	<a 
 		routerLink = "login"

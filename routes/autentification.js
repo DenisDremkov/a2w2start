@@ -2,6 +2,7 @@ const User = require('../models/user');
 
 module.exports = (router) => {
 	router.post('/register', function(req, res) {
+		console.log('registr')
 		if (req.body.email && req.body.username && req.body.password) {
 			
 			let user = new User({

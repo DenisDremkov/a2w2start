@@ -30,14 +30,17 @@ export class ValidMessage {
 	private wrapper: any;
 	
 	createMessage (wrap:any, err:any) {
-		console.log(err)
+		console.log(wrap, err)
 		let message;
 		for (var key in err) {
-			if (!err.hasOwnProperty(key)) continue;
-			console.log(key,this.locali)
-			message = message + ' ' + this.locali[key];
+			if (err.hasOwnProperty(key)) {
+				// message = this.locali[key];
+				console.error(this.locali)
+			};
+		// 	console.log(key,this.locali)
+		// 	message = message + ' ' + this.locali[key];
 		}
-		wrap.append('<span class="my_valid_message">' + message + '</span>')
+		// wrap.append('<span class="my_valid_message">' + message + '</span>')
 	}
 
 	removeMessage (wrap:any) {
@@ -74,15 +77,16 @@ export class ValidMessage {
 		private _localiService: LocaliService
 	) { 
 		_el.nativeElement.style.backgroundColor = 'yellow';
-		this.locali = this._localiService.getData('validErrorMessages');
-		console.log(this.locali)
+		// this.locali = this._localiService.getData('validErrorMessages');
+		// console.log('create directive')
+		// console.log(this.locali)
 	};
 	
 
 
 	onBlur(e:any) {
 		if (this.controls[this.controlName].invalid) {
-			console.log(this.controls[this.controlName])
+			// console.log(this.controls[this.controlName])
 			this.init($(this._el.nativeElement), this.controls[this.controlName])
 		}
 		else {

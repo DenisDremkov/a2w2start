@@ -43,7 +43,6 @@ export class Registr {
 		private _location: Location
 
 	) {
-		console.log('create registr form')
 		this.createForm()
 	}
 
@@ -64,7 +63,6 @@ export class Registr {
 		this.authService
 			.registerUser( newUser )
 			.subscribe( (data:any) =>{
-				console.log(data);
 				this.form.controls['email'].enable();
 				this.form.controls['username'].enable();
 				this.form.controls['password'].enable();

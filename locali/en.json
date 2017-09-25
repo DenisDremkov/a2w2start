@@ -4,5 +4,10 @@
 		"pattern": "pattern error",
 		"minlength": "minlength error",
 		"maxlength": "maxlength error"
+	},
+	"navigation": {
+		"home":"home",
+		"products":"products",
+		"admin":"admin"
 	}
 }

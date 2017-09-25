@@ -13,9 +13,7 @@ const express 		= require('express'),
 	fs 				= require("fs"),
 	localiRu 		= require('./locali/ru.json'),
 	localiEn 		= require('./locali/en.json');
-// var fs = require("fs");
-// console.log("\n *START* \n");
-// var content = fs.readFileSync("content.txt");
+
 mongoose.Promise = global.Promise;
 mongoose.connect( dbConfig.dbHost, {useMongoClient: true, promiseLibrary: global.Promise },	err => {
 	if (err) {console.log(err)}
@@ -30,25 +28,27 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, configApp.publicFolderName)))
+
 app.use('/auth', autentification); // autentif/registr,  autentif/login ....
+// app.use(); // autentif/registr,  autentif/login ....
 
 
 // app.get('/api', api);
 app.get('/getLocalization', function(req, res) {
-	res.send({lang:"en"})
-	console.log('asdasdasdasd')
+	console.log('get locali')
+	res.send(localiRu)
 });
 
 // app.get('/api', api);
 app.get('/appInit', function(req, res) {
-	
-	// console.log(JSON.parse(req.headers.param))
-	setTimeout(function() {
-		res.send({config: 'async'})
-	},500)
+	console.log('appInit')
+	if (req.query.lang === 'ru') {res.send(JSON.stringify(localiRu));}
+	if (req.query.lang === 'en') {res.send(JSON.stringify(localiEn));}
 });
 
-
+app.post('/setLanguage', function(req, res) {
+	res.send({success: true})
+});
 
 app.listen(PORT, function() {
 	console.log('EXPRESS LISTEN ON PORT: ' + PORT);

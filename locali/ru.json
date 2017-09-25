@@ -4,5 +4,10 @@
 		"pattern": "pattern ошибка",
 		"minlength": "minlength ошибка",
 		"maxlength": "maxlength ошибка"
+	},
+	"navigation": {
+		"home":"главная",
+		"products":"продукты",
+		"admin":"админ"
 	}
 }
