@@ -1,6 +1,5 @@
 
-<form [formGroup] = "form"> 
-
+<form [formGroup] = "form" novalidate> 
 
 	<i on-click = "back()" class="fa fa-times" aria-hidden="true"></i>
 	
@@ -17,12 +16,7 @@
 			class			= "form-control" 
 			aria-describedby= "loginHelp" 
 			placeholder		= "Login"
-			
-			required
-		>
-		<!-- [controls] 		= "form.controls"
-			[controlName] 	= "'username'"
-			my-valid-message -->
+			required>
 	</label>
 	
 
@@ -35,8 +29,7 @@
 		type			= "password" 
 		class			= "form-control" 
 		placeholder		= "Password"
-		required
-	>
+		required>
 
 	<button 
 		class		= "btn btn-light"
@@ -48,7 +41,9 @@
 		[routerLinkActive]="['active']" 
 		routerLink = "registration">
 		registration
-	</a>	
+	</a>
+
+	<span>{{serverResponse}}</span>
 
 </form>
 <router-outlet></router-outlet>

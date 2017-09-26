@@ -1,13 +1,17 @@
+// core
+	import { RouterModule, Routes } from '@angular/router';
+	import { NgModule } 			from '@angular/core';
 
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } 			from '@angular/core';
+// components
+	import { Products } 			from './components/products/products.component';
+	import { Admin } 				from './components/admin/admin.component';
+	import { Home } 				from './components/home/home.component';
+	import { Registr } 				from './components/registr/registr.component';
+	import { Login } 				from './components/login/login.component';
+	import { Profile } 				from './components/profile/profile.component';
 
-
-import { Products } 			from './components/products/products.component';
-import { Admin } 				from './components/admin/admin.component';
-import { Home } 				from './components/home/home.component';
-import { Registr } 				from './components/registr/registr.component';
-import { Login } 				from './components/login/login.component';
+// guards
+	import { AuthGuard }			from './shared/guards/auth.guard';
 
 const appRoutes: Routes = [
 	{
@@ -40,14 +44,11 @@ const appRoutes: Routes = [
 			}
 		]
 	},
-	// { 
-	// 	path: 'registration', 
-	// 	component: Registr 
-	// },
-	// {
-	// 	path: 'baket',
-	// 	component: Basket
-	// },
+	{
+		path: 'profile',
+		canActivate: [AuthGuard],
+		component: Profile
+	},
 	{
 		path: '**',
 		redirectTo: 'home'

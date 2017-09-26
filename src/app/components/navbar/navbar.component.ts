@@ -4,9 +4,9 @@
 	import { ViewEncapsulation } 	from '@angular/core';
 
 // service
-	import { LocaliService } from '../../shared/services/locali.service';
+	import { LocaliService } 		from '../../shared/services/locali.service';
+	import { AuthService } 			from '../../shared/services/auth.service';
 
-// повторить роутинг и детали роутинга, начать видео регистрации монго дб модель
 
 @Component({
 	selector: '[my-navbar]',
@@ -20,8 +20,12 @@
 export class NavBar { 
 
 	locali:any;
+	isLogIn:any;
 	
-	constructor (private _localiService: LocaliService) {
-		this.locali = _localiService.getSectionLocali('navigation')
+	constructor (private _localiService: LocaliService, private _authService: AuthService) {
+		this.locali = _localiService.getSectionLocali('navigation');
+		this.isLogIn = function () {
+			return this._authService.isLogIn();
+		}
 	}
 }

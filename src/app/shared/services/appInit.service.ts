@@ -11,6 +11,9 @@ import { Observable} 	from 'rxjs/Rx';
 export class AppInitService {
     
     private domain:any = 'http://localhost:3000';
+    
+    private _userAuth: boolean;
+    private _user: any;
     private _config: any;
     private _userLanguage: string;
 
@@ -41,11 +44,19 @@ export class AppInitService {
         return this._config;
     }
 
-    getUserLanguage(): any {
-        return this._userLanguage;
+    private setUserAuth () {
+        this._userAuth = true;
     }
 
-    getFullLocali ():any {
-        return this._config;
+    getUserLanguage(): any { return this._userLanguage; }
+    
+    getFullLocali ():any { return this._config; }
+    
+    setUserProfile(user:any) { this._user = user; this.setUserAuth()}
+    
+    getUserProfile() { return this._user; }
+
+    getUserAuth() {
+        return this._userAuth;
     }
 }

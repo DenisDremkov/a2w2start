@@ -17,6 +17,13 @@
 	{{locali.admin}}
 </a>
 
+<a 
+	*ngIf = "isLogIn()"
+	[routerLinkActive]="['active']" 
+	routerLink = "profile">
+	{{locali.profile}}
+</a>
+
 
 
 

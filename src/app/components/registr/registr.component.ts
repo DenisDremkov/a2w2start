@@ -4,6 +4,12 @@
 	import { FormBuilder, FormGroup, Validators } 	from '@angular/forms';
 	import { Http, Headers, RequestOptions } 		from '@angular/http';
 	import { Location } 							from '@angular/common';
+	import { 
+		Router, 
+		CanActivate, 
+		ActivatedRouteSnapshot, 
+		RouterStateSnapshot 
+	} 												from '@angular/router';
 
 // services
 	import { AuthService } 							from '../../shared/services/auth.service';
@@ -16,11 +22,11 @@
 	import { fadeInAnimation } 						from '../_animations/fade-in.animation';
 
 @Component({
-	selector: 'my-auth',
-	templateUrl: './registr.component.html',
-	styleUrls: ['./registr.component.scss'],
-	host: { '[@slideInOutAnimation]': '' },
-	animations: [slideInOutAnimation]
+	selector: 		'my-auth',
+	templateUrl: 	'./registr.component.html',
+	styleUrls: 		['./registr.component.scss'],
+	host: 			{ '[@slideInOutAnimation]': '' },
+	animations: 	[slideInOutAnimation]
 })
 
 export class Registr { 
@@ -28,22 +34,19 @@ export class Registr {
 	form: FormGroup;
 	pattern: string;
 	
-	createForm () {
+	constructor (
+		private formBuilder: FormBuilder,
+		private authService: AuthService,
+		private _location: Location,
+		private _router: Router
+
+	) {
 		this.form = this.formBuilder.group({
 			username: 	['', Validators.required],
 			email: 		['mail@mail.ru', Validators.required],
 			password: 	['', Validators.required],
 			confirm: 	['', Validators.required]
 		})
-	}
-	
-	constructor (
-		private formBuilder: FormBuilder,
-		private authService: AuthService,
-		private _location: Location
-
-	) {
-		this.createForm()
 	}
 
 	back () {this._location.back();}
@@ -66,8 +69,12 @@ export class Registr {
 				this.form.controls['email'].enable();
 				this.form.controls['username'].enable();
 				this.form.controls['password'].enable();
-				if (!data.success) {
-					
+				if (data.success) {
+					console.log('registration success');
+					 this._router.navigate(['/login']);									
+				}
+				else {
+					console.log(data.msg)
 				}
 			})
 	}

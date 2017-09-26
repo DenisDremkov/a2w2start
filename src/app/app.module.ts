@@ -19,16 +19,18 @@
 	import { Home } 				from './components/home/home.component';
 	import { Login } 				from './components/login/login.component';
 	import { Registr } 				from './components/registr/registr.component';
+	import { Profile } 				from './components/profile/profile.component';
 
 
-// shared (services)
-	// import { SharedModule } from './shared/shared.module';
+// shared
+	// services
 	import { AppInitService } 		from './shared/services/appInit.service';
 	import { LocaliService } 		from './shared/services/locali.service';
 	import { AuthService } 			from './shared/services/auth.service';
-
-// shared (directives)
-	import { ValidMessage } from './shared/directives/validMessage.directive';
+	// guards
+	import { AuthGuard } 			from './shared/guards/auth.guard';
+	// directives
+	import { ValidMessage } 		from './shared/directives/validMessage.directive';
 
 
 
@@ -43,7 +45,8 @@
 		Home,
 		Registr,
 		Login,
-		ValidMessage
+		ValidMessage,
+		Profile
 	],
 	providers: [
 		AppInitService,
@@ -54,7 +57,8 @@
 			deps: [AppInitService]
 		},
 		LocaliService,
-		AuthService
+		AuthService,
+		AuthGuard
 	],
 	
 	imports: [ 

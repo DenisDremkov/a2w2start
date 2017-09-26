@@ -8,6 +8,7 @@
 	"navigation": {
 		"home":"главная",
 		"products":"продукты",
-		"admin":"админ"
+		"admin":"админ",
+		"profile":"личные данные"
 	}
 }
